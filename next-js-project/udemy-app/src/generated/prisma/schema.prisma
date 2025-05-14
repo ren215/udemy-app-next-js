@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/**
+ * @id : PK( プライマリキー )
+ * @default : デフォルト値
+ * @unique : 重複不可
+ * ? : 必須ではない )
+ * @updatedAt : 更新年月
+ * @unique : このフィールドの値は重複してはいけない
+ * cuid : ユニークなIDを自動生成
+ */
+
+model Contact {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  createAd  DateTime @default(now())
+  updatedAd DateTime @updatedAt
+}
