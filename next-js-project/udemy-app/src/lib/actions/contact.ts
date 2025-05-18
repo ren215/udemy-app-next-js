@@ -42,5 +42,5 @@ export const submitContactForm = async (prevState: ActionState, formData: FormDa
 
   console.log(`送信されたデータ 名前：${name},メールアドレス：${email}`);
 
-  redirect('/contacts/complete');
+  redirect('/contacts/list');
 };
