@@ -1,11 +1,11 @@
 import { prisma } from '@/lib/prisma';
 
-export const getContacts = async () => {
+export const getContacts = async (isId: boolean, isName: boolean, isMail: boolean) => {
   return await prisma.contact.findMany({
     select: {
-      id: true,
-      name: true,
-      email: true,
+      id: isId,
+      name: isName,
+      email: isMail,
     },
     orderBy: {
       createAd: 'desc',
